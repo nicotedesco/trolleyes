@@ -40,13 +40,13 @@ moduloServicios.factory('objectService', function () {
                     return 'fa fa-sticky-note-o ';
                     break;
                 case "producto":
-                    return 'fa fa-diamond';
+                    return 'fa fa-balance-scale';
                     break;
                 case "linea_pedido":
-                    return 'fa fa-bolt';
+                    return 'fa fa-th-list';
                     break;
                 case "carrito":
-                    return 'fa fa-cart-plus';
+                    return 'fa fa-shopping-cart';
                     break;
                 default:
                     return null;
