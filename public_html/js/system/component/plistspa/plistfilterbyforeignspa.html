@@ -38,7 +38,8 @@ and open the template in the editor.
                 reference="filterbyforeign.field.reference"
                 profile="filterbyforeign.profile"
                 description="filterbyforeign.field.description"
-                required="true">
+                required="true"
+                disabled="false">
             </foreign-key>
             <span class="help-block" ng-if="!filterForm[filterbyforeign.field.name].$pristine && filterForm[filterbyforeign.field.name].$error.required">El campo es obligatorio</span>        
         </div>
