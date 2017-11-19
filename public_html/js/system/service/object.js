@@ -48,6 +48,9 @@ moduloServicios.factory('objectService', function () {
                 case "carrito":
                     return 'fa fa-shopping-cart';
                     break;
+                case "vista":
+                return 'fa fa-eye';
+                break;
                 default:
                     return null;
             }

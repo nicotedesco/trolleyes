@@ -95,7 +95,10 @@ trolleyes.config(['$routeProvider', function ($routeProvider) {
         //--------Linea pedido cliente------------------
          $routeProvider.when('/linea_pedido/2/plist/:page?/:rpp?', {templateUrl: 'js/app/linea_pedido/2/plist.html', controller: 'Linea_pedidoPList2Controller', resolve: {auth: authenticationClientPromise}}); 
          $routeProvider.when('/linea_pedido/2/view/:id', {templateUrl: 'js/app/linea_pedido/2/view.html', controller: 'Linea_pedidoView2Controller', resolve: {auth: authenticationClientPromise}});
-        
+         $routeProvider.when('/linea_pedido/2/newXproducto/:id_producto', {templateUrl: 'js/app/linea_pedido/2/Xproducto/new.html', controller: 'Linea_pedidoXproductoNew2Controller', resolve: {auth: authenticationClientPromise}});
+         $routeProvider.when('/linea_pedido/2/plistXproducto/:id_producto/:page?/:rpp?', {templateUrl: 'js/app/linea_pedido/2/Xproducto/plist.html', controller: 'Linea_pedidoXproductoPList2Controller', resolve: {auth: authenticationClientPromise}});
+         $routeProvider.when('/linea_pedido/2/newXpedido/:id_pedido', {templateUrl: 'js/app/linea_pedido/2/Xpedido/new.html', controller: 'Linea_pedidoXpedidoNew2Controller', resolve: {auth: authenticationClientPromise}});
+        $routeProvider.when('/linea_pedido/2/plistXpedido/:id_pedido/:page?/:rpp?', {templateUrl: 'js/app/linea_pedido/2/Xpedido/plist.html', controller: 'Linea_pedidoXpedidoPList2Controller', resolve: {auth: authenticationClientPromise}});
         //-------Carrito administrador-------------------
          $routeProvider.when('/carrito/1/plist/:page?/:rpp?', {templateUrl: 'js/app/carrito/1/plist.html', controller: 'CarritoPList1Controller', resolve: {auth: authenticationAdministratorPromise}}); 
          $routeProvider.when('/carrito/1/remove/:id', {templateUrl: 'js/app/carrito/1/remove.html', controller: 'CarritoRemove1Controller', resolve: {auth: authenticationAdministratorPromise}});
