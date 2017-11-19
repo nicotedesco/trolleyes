@@ -6,12 +6,12 @@
 
 
 'use strict';
-moduloCarrito.controller('CarritoPList1Controller',
+moduloCarrito.controller('CarritoPList2Controller',
         ['$scope', '$routeParams', '$location', 'serverCallService', 'toolService', 'constantService', 'objectService',
             function ($scope, $routeParams, $location, serverCallService, toolService, constantService, objectService) {
                 $scope.ob = "carrito";
                 $scope.op = "plist";
-                $scope.profile = 1;
+                $scope.profile = 2;
                 //---
                 $scope.status = null;
                 $scope.debugging = constantService.debugging();
