@@ -42,6 +42,13 @@ moduloServicios.factory('serverCallService',
                     list: function (strObject) {
                         return $http.get(constantService.getAppUrl() + '?ob='+strObject + '&op=list', 'GET', '');
                     },
+                     empty: function (strObject) {
+                        return $http.get(constantService.getAppUrl() + '?ob=' + strObject + '&op=empty', 'GET', '');
+                    },
+
+                    buy: function (strObject) {
+                        return $http.get(constantService.getAppUrl() + '?ob=' + strObject + '&op=buy', 'GET', '');
+                    },
                     getPage: function (strObject, rpp, page, filter, order) {
                         if (filter) {
                             if (order) {

@@ -28,7 +28,7 @@ and open the template in the editor.
                                         <li role="presentation" class="active"><a data-target="#pane0" aria-controls="pane0" role="tab" data-toggle="tab" aria-expanded="false">Consulta</a></li>
                                         <li role="presentation"><a data-target="#pane1" aria-controls="pane1" role="tab" data-toggle="tab">Filtro de servidor</a></li>
                                         <li role="presentation"><a data-target="#pane2" aria-controls="pane2" role="tab" data-toggle="tab">Filtro de cliente</a></li>
-                                        <li role="presentation"><a data-target="#pane3" aria-controls="pane3" role="tab" data-toggle="tab">Nuevo {{obtitle}}</a></li>
+                                        
                                     </ul>
                                     <div class="tab-content">
                                         <div role="tabpanel" id="pane0" class="tab-pane fade active in">
@@ -67,19 +67,23 @@ and open the template in the editor.
                                             <p></p>
                                         </div>
                                         <div role="tabpanel" id="pane1" class="tab-pane fade">
-                                            <div class="row">
-                                                <div class="col-md-12">                                                                                                                                                           
-                                                    <select class="navbar-form navbar-left" ng-model="filterType" convert-to-number>
-                                                        <option value="0">Filtrar textos</option>
-                                                        <option value="1">Filtrar números</option>
-                                                        <option value="2">Filtrar fechas</option>
-                                                        <option value="3">Filtrar boolean</option>
-                                                    </select>
-                                                    <p></p>
+                                           <div class="row">
+                                                <div class="col-md-5">
+                                                    <form class="navbar-form navbar-left" role="form" id="typeFilterForm">
+                                                        <label class="control-label col-sm-3" for="filterSelection">
+                                                            Selecciona filtro:
+                                                        </label>
+                                                        <select class="navbar-form navbar-left" ng-model="filterType" convert-to-number id="filterSelection">
+                                                            <option value="0">Filtrar por código o nombre</option>
+                                                            <option value="1">Filtrar por id, existencias o precio</option>                                                                                        
+                                                        </select>
+                                                    </form>
+                                                </div>
+                                                <div class="col-md-7">
                                                     <div ng-show="filterType == 0">
                                                         <cplistfilterbystring
                                                             url="url"
-                                                            fields="[{'name':'codigo','longname':'Codigo'},{'name':'descripcion','longname':'Descripcion'}]"
+                                                            fields="filterString"
                                                             rpp="rpp"
                                                             numpage="numpage"
                                                             orderparams="orderParams"
@@ -90,16 +94,13 @@ and open the template in the editor.
                                                     <div ng-show="filterType == 1">
                                                         <cplistfilterbynumber
                                                             url="url"
-                                                            fields="[{'name':'id','longname':'Identificador'},{'name':'existencias','longname':'Existencias'},{'name':'precio','longname':'Precio'}]"
+                                                            fields="filterNumber"
                                                             rpp="rpp"
                                                             numpage="numpage"
                                                             orderparams="orderParams"
                                                             filterparams="filterParams">
                                                         </cplistfilterbynumber>
-                                                            
                                                     </div>
-                                                  
-                                                    
                                                 </div>
                                             </div>
                                         </div>
@@ -114,42 +115,21 @@ and open the template in the editor.
                                                 </div>
                                             </div>
                                         </div>
-                                        <div role="tabpanel" id="pane3" class="tab-pane fade">
-                                            <div class="row">
-                                                <div class="col-md-12 text-center">
-                                                    <p><br>
-                                                        <a class="btn btn-primary" href="{{ob}}/{{profile}}/new">Crear un nuevo {{ob}}</a>
-                                                    </p>
-                                                </div>
-                                            </div>
-                                        </div>
                                     </div>
                                 </div>
                                 <div id="datos" ng-if="!status">
                                     <div class="panel panel-default">
-                                        <div class="panel-heading">
-                                            <div class="text-center">
-                                                <ul class="list-inline">
-                                                    <li><input type="checkbox" ng-model="visibles.id" ng-checked="visibles.id">Ident.</li>
-                                                    <li><input type="checkbox" ng-model="visibles.codigo" ng-checked="visibles.codigo">Codigo</li>
-                                                    <li><input type="checkbox" ng-model="visibles.existencias" ng-checked="visibles.existencias" >Existencias</li>
-                                                    <li><input type="checkbox" ng-model="visibles.precio" ng-checked="visibles.precio" >Precio</li>
-                                                    <li><input type="checkbox" ng-model="visibles.descripcion" ng-checked="visibles.descripcion" >Descripcion</li>
-                                               
-                                                </ul>
-                                            </div>
-                                        </div>
                                         <table class="table table-responsive table-bordered table-hover table-striped table-condensed dataTable no-footer">
                                             <tr>
-                                                <th ng-show="visibles.id" class="text-center">
-                                                    <label>ID.</label><br/>
-                                                    <a ng-click="doorder('id', 'asc')"><i class="glyphicon glyphicon-arrow-up"></i></a>
-                                                    <a ng-click="doorder('id', 'desc')"><i class="glyphicon glyphicon-arrow-down"></i></a>
-                                                </th>
                                                 <th ng-show="visibles.codigo" class="text-center">
-                                                    <label>Codigo</label><br/>
+                                                    <label>Cod.</label><br/>
                                                     <a ng-click="doorder('codigo', 'asc')"><i class="glyphicon glyphicon-arrow-up"></i></a>
                                                     <a ng-click="doorder('codigo', 'desc')"><i class="glyphicon glyphicon-arrow-down"></i></a>
+                                                </th>
+                                                <th ng-show="visibles.descripcion" class="text-center">
+                                                    <label>Nombre</label><br/>
+                                                    <a ng-click="doorder('descripcion', 'asc')"><i class="glyphicon glyphicon-arrow-up"></i></a>
+                                                    <a ng-click="doorder('descripcion', 'desc')"><i class="glyphicon glyphicon-arrow-down"></i></a>
                                                 </th>
                                                 <th ng-show="visibles.existencias" class="text-center">
                                                     <label>Existencias</label><br/>
@@ -161,35 +141,23 @@ and open the template in the editor.
                                                     <a ng-click="doorder('precio', 'asc')"><i class="glyphicon glyphicon-arrow-up"></i></a>
                                                     <a ng-click="doorder('precio', 'desc')"><i class="glyphicon glyphicon-arrow-down"></i></a>
                                                 </th>
-                                                <th ng-show="visibles.descripcion" class="text-center">
-                                                    <label>Descripcion</label><br/>
-                                                    <a ng-click="doorder('descripcion', 'asc')"><i class="glyphicon glyphicon-arrow-up"></i></a>
-                                                    <a ng-click="doorder('descripcion', 'desc')"><i class="glyphicon glyphicon-arrow-down"></i></a>
-                                                </th>
-                                                
-                                                <th class="text-center">Acciones</th>
                                             </tr>
-                                            <tbody>
-                                                <tr ng-repeat="obj in page| filter:searchText">
-                                                    <td ng-show="visibles.id"><b>{{obj.id}}</b></td>
-                                                    <td ng-show="visibles.codigo"><b>{{obj.codigo}}</b></td>
-                                                    <td ng-show="visibles.existencias">{{obj.existencias}}</td>
-                                                    <td ng-show="visibles.precio">{{obj.precio | currency : "€" : 2}}</td>
-                                                    <td ng-show="visibles.descripcion">{{obj.descripcion}}</td>
-
-                                                    <td>
-                                                        <div class="btn-toolbar" role="toolbar">
-                                                            <div class="btn-group">
-                                                                <actions id="obj.id" name="ob"></actions>
-                                                                <a class="btn btn-default btn-xs" title="Pedidos" href="linea_pedido/{{profile}}/plistXproducto/{{obj.id}}/1/10">
-                                                                    <span ng-class="objectService.getIcon('pedido')"></span>
-                                                                </a>
-                                                            </div>
-                                                        </div>
-                                                    </td>
-                                                </tr>
-                                            </tbody>
                                         </table>
+                                        
+                                    </div>
+                                    <div class="prod-panel" ng-repeat="obj in page| filter:searchText">
+                                        <div class="thumb"><img src="images/thumb.png" alt="" /></div>
+                                        <div class="ref">ref: {{obj.codigo}}</div>
+                                        <div class="prod_name"><b>{{obj.descripcion}}</b></div>
+                                        <div class="existencias">{{obj.existencias}}</div>
+                                        <div class="precio">{{obj.precio| currency : "€":2}}</div>
+
+                                        <div class="input-group spinner">
+                                            <input type="number" value="1" step="1" min="0" max="9999" name="cantidad" class="form-control" >
+                                            <a class="btn btn-default" title="Añadir" href="">
+                                                <span ng-class="objectService.getIcon('carrito')"></span>
+                                            </a>                                        
+                                        </div>
                                     </div>
                                 </div>
                                 <a class="btn btn-default" href="home">Cerrar</a>
@@ -202,3 +170,13 @@ and open the template in the editor.
         </div>
     </div>
 </div>
+<script src='http://ajax.googleapis.com/ajax/libs/jquery/1.2.6/jquery.min.js'></script>
+<script >(function ($) {
+  $('.spinner .btn:first-of-type').on('click', function() {
+    $('.spinner input').val( parseInt($('.spinner input').val(), 10) + 1);
+  });
+  $('.spinner .btn:last-of-type').on('click', function() {
+    $('.spinner input').val( parseInt($('.spinner input').val(), 10) - 1);
+  });
+})(jQuery);
+</script>
