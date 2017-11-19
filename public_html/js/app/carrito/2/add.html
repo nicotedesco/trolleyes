@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<menu></menu>
+<div id="wrapper" ng-cloak>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <header ob="ob" title="'Añadir al ' + objectService.getName(ob)"></header>
+                    </div>
+                    <div class="panel-body">
+                        <div class="row-fluid" ng-if="status">
+                            <div class="col-xs-12">
+                                <div class="alert alert-danger" role="alert">
+                                    <br>
+                                    <h3 class="bg-danger">{{status}}</h3>
+                                    <br>
+                                    <a class="btn btn-default" ng-click="back()">Volver</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row-fluid" ng-if="!status">
+                            <div class="span6 offset3">
+                                <div class="form-group" id="cantidad-group"
+                                     ng-class="{'has-error':(outerForm.cantidad.$error.pattern && !outerForm.cantidad.$pristine) ||
+                                             (outerForm.cantidad.$error.required && !outerForm.cantidad.$pristine)}">
+                                    <label class="control-label col-sm-2" for="iva">
+                                        <span ng-show="true">*</span>
+                                        Cantidad
+                                    </label>
+                                    <div class="control col-sm-3">
+                                        <input ng-model="bean.cantidad"
+                                               type="text"
+                                               class="form-control"
+                                               id="cantidad"
+                                               name="cantidad"
+                                               ng-pattern=""
+                                               placeholder="Cantidad"
+                                               maxlength="100"
+                                               ng-required="true"
+                                               />
+                                        <span class="help-block" ng-if="!outerForm.cantidad.$pristine && outerForm.cantidad.$error.required">El campo es obligatorio</span>
+                                        <span class="help-block" ng-if="!outerForm.cantidad.$pristine && outerForm.cantidad.$error.pattern">El campo no tiene formato adecuado: Los nombres deben comenzar con mayúsculas.</span>
+                                    </div>
+                                </div>
+                                <div class="control-group text-right">
+                                    <div class="controls">
+                                        <a class="btn btn-primary" ng-click="add()" ng-disabled="outerForm.$valid">Añadir</a>
+                                        <a class="btn btn-default" ng-click="back()">Volver</a>
+                                        <a class="btn btn-default" href="home">Cerrar</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="panel-footer" style="font-family: Questrial, serif;" ng-include="'js/system/include/footer.html'"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

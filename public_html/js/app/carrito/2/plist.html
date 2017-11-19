@@ -104,29 +104,6 @@ and open the template in the editor.
                                                             filterparams="filterParams">
                                                         </cplistfilterbynumber>
                                                     </div>
-                                                    <p></p>
-                                                    <div ng-show="filterType == 2">
-                                                        <cplistfilterbydate
-                                                            url="url"
-                                                            fields="filterDate"
-                                                            rpp="rpp"
-                                                            numpage="numpage"
-                                                            orderparams="orderParams"
-                                                            filterparams="filterParams">
-                                                        </cplistfilterbydate>
-                                                    </div>
-                                                    <p></p>
-                                                    <div ng-show="filterType == 3">
-                                                        <cplistfilterbyforeign
-                                                            url="url"
-                                                            field="filterTipousuario"
-                                                            rpp="rpp"
-                                                            numpage="numpage"
-                                                            orderparams="orderParams"
-                                                            filterparams="filterParams"
-                                                            profile="profile">
-                                                        </cplistfilterbyforeign>
-                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
@@ -188,7 +165,6 @@ and open the template in the editor.
                                                 <tr ng-repeat="obj in carritobean| filter:searchText">
                                                     <td ng-show="visibles.id_producto"><b>{{obj.id_producto}}</b></td>
                                                     <td ng-show="visibles.cantidad"><b>{{obj.cantidad}}</b></td>
-                                                    
                                                      <td ng-show="visibles.producto" class="text-center">
                                                         <a href="producto/{{profile}}/view/{{obj.producto.id}}">{{obj.producto.descripcion}}</a>
                                                     </td>
@@ -206,6 +182,7 @@ and open the template in the editor.
                                     </div>
                                 </div>
                                 <a class="btn btn-default" href="home">Cerrar</a>
+                                <a class="btn btn-primary" href="carrito/{{profile}}/buy">Comprar</a>
                             </div>
                         </div>
                     </div>

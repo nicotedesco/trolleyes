@@ -9,7 +9,7 @@ moduloCarrito.controller('CarritoEmpty2Controller',
         ['$scope', '$routeParams', '$location', 'serverCallService', 'toolService', 'constantService', 'objectService',
             function ($scope, $routeParams, $location, serverCallService, toolService, constantService, objectService) {
                 $scope.ob = "carrito";
-                $scope.op = "plist";
+                $scope.op = "empty";
                 $scope.profile = 2;
                 //---
                 $scope.status = null;

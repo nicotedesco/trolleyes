@@ -28,7 +28,6 @@ and open the template in the editor.
                                         <li role="presentation" class="active"><a data-target="#pane0" aria-controls="pane0" role="tab" data-toggle="tab" aria-expanded="false">Consulta</a></li>
                                         <li role="presentation"><a data-target="#pane1" aria-controls="pane1" role="tab" data-toggle="tab">Filtro de servidor</a></li>
                                         <li role="presentation"><a data-target="#pane2" aria-controls="pane2" role="tab" data-toggle="tab">Filtro de cliente</a></li>
-                                        
                                     </ul>
                                     <div class="tab-content">
                                         <div role="tabpanel" id="pane0" class="tab-pane fade active in">
@@ -67,7 +66,7 @@ and open the template in the editor.
                                             <p></p>
                                         </div>
                                         <div role="tabpanel" id="pane1" class="tab-pane fade">
-                                           <div class="row">
+                                            <div class="row">
                                                 <div class="col-md-5">
                                                     <form class="navbar-form navbar-left" role="form" id="typeFilterForm">
                                                         <label class="control-label col-sm-3" for="filterSelection">
@@ -127,12 +126,17 @@ and open the template in the editor.
                                                     <li><input type="checkbox" ng-model="visibles.existencias" ng-checked="visibles.existencias" >Existencias</li>
                                                     <li><input type="checkbox" ng-model="visibles.precio" ng-checked="visibles.precio" >Precio</li>
                                                     <li><input type="checkbox" ng-model="visibles.descripcion" ng-checked="visibles.descripcion" >Descripcion</li>
-                                               
+
                                                 </ul>
                                             </div>
                                         </div>
                                         <table class="table table-responsive table-bordered table-hover table-striped table-condensed dataTable no-footer">
                                             <tr>
+                                                <th ng-show="visibles.id" class="text-center">
+                                                    <label>ID.</label><br/>
+                                                    <a ng-click="doorder('id', 'asc')"><i class="glyphicon glyphicon-arrow-up"></i></a>
+                                                    <a ng-click="doorder('id', 'desc')"><i class="glyphicon glyphicon-arrow-down"></i></a>
+</th>
                                                 <th ng-show="visibles.codigo" class="text-center">
                                                     <label>Cod.</label><br/>
                                                     <a ng-click="doorder('codigo', 'asc')"><i class="glyphicon glyphicon-arrow-up"></i></a>
@@ -157,26 +161,26 @@ and open the template in the editor.
                                             </tr>
                                             <tbody>
                                                 <tr ng-repeat="obj in page| filter:searchText">
+                                                    <td ng-show="visibles.id"><b>{{obj.id}}</b></td>
                                                     <td ng-show="visibles.codigo"><b>{{obj.codigo}}</b></td>
                                                     <td ng-show="visibles.descripcion">{{obj.descripcion}}</td>
                                                     <td ng-show="visibles.existencias">{{obj.existencias}}</td>
-                                                    <td ng-show="visibles.precio">{{obj.precio | currency : "€" : 2}}</td>
-                                                   <td>
+                                                    <td ng-show="visibles.precio">{{obj.precio| currency : "€" : 2}}</td>
+                                                    <td>
                                                         <div class="btn-toolbar" role="toolbar">
                                                             <div class="btn-group">
-                                                                <input type="number" value="1" step="1" min="0" max="9999" name="cantidad" class="form-control" >
-                                                                <a class="btn btn-default btn-xs" title="Añadir al carro" href="">
+                                                                <button class="btn btn-info btn-block" href="carrito/{{profile}}/add/{{obj.id}}"> 
                                                                     <span ng-class="objectService.getIcon('carrito')"></span>
-                                                                </a>
-                                                                
+                                                                </button>
+
                                                             </div>
-                                                            
+
                                                         </div>
-                                                   </td>
+                                                    </td>
                                                 </tr>
                                             </tbody>
                                         </table>
-                                        
+
                                     </div>   
                                 </div>
                                 <a class="btn btn-default" href="home">Cerrar</a>
@@ -189,13 +193,6 @@ and open the template in the editor.
         </div>
     </div>
 </div>
-<script src='http://ajax.googleapis.com/ajax/libs/jquery/1.2.6/jquery.min.js'></script>
-<script >(function ($) {
-  $('.spinner .btn:first-of-type').on('click', function() {
-    $('.spinner input').val( parseInt($('.spinner input').val(), 10) + 1);
-  });
-  $('.spinner .btn:last-of-type').on('click', function() {
-    $('.spinner input').val( parseInt($('.spinner input').val(), 10) - 1);
-  });
-})(jQuery);
-</script>
+<script>
+    
+    
