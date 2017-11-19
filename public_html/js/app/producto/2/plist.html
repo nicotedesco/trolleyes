@@ -136,7 +136,7 @@ and open the template in the editor.
                                                     <label>ID.</label><br/>
                                                     <a ng-click="doorder('id', 'asc')"><i class="glyphicon glyphicon-arrow-up"></i></a>
                                                     <a ng-click="doorder('id', 'desc')"><i class="glyphicon glyphicon-arrow-down"></i></a>
-</th>
+                                                </th>
                                                 <th ng-show="visibles.codigo" class="text-center">
                                                     <label>Cod.</label><br/>
                                                     <a ng-click="doorder('codigo', 'asc')"><i class="glyphicon glyphicon-arrow-up"></i></a>
@@ -176,9 +176,9 @@ and open the template in the editor.
                                                                     <span ng-class="objectService.getIcon('pedido')"></span>
                                                                 </a>
                                                                 <input type="number"name="Cantidad"></input>
-                                                                <button class="btn btn-info btn-block" ng-click="add()" ng-disabled="outerForm.$valid"> 
+                                                                <a class="btn btn-info btn-block" href="carrito/{{profile}}/add/{{obj.id}}"> 
                                                                     <span ng-class="objectService.getIcon('carrito')"></span>
-                                                                </button>
+                                                                </a>
 
                                                             </div>
 
