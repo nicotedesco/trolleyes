@@ -79,7 +79,7 @@ and open the template in the editor.
                                                     <div ng-show="filterType == 0">
                                                         <cplistfilterbystring
                                                             url="url"
-                                                            fields="[{'name':'codigo','longname':'Codigo'},{'name':'descripcion','longname':'Descripcion'}]"
+                                                            fields=""
                                                             rpp="rpp"
                                                             numpage="numpage"
                                                             orderparams="orderParams"
@@ -90,7 +90,7 @@ and open the template in the editor.
                                                     <div ng-show="filterType == 1">
                                                         <cplistfilterbynumber
                                                             url="url"
-                                                            fields="[{'name':'id','longname':'Identificador'},{'name':'existencias','longname':'Existencias'},{'name':'precio','longname':'Precio'}]"
+                                                            fields="[{'name':'id','longname':'Identificador'},{'name':'iva','longname':'Iva'}]"
                                                             rpp="rpp"
                                                             numpage="numpage"
                                                             orderparams="orderParams"
@@ -98,7 +98,30 @@ and open the template in the editor.
                                                         </cplistfilterbynumber>
                                                             
                                                     </div>
-                                                  
+                                                    <p></p>
+                                                     <div ng-show="filterType == 2">
+                                                        <cplistfilterbydate
+                                                            url="url"
+                                                            fields="[{'name':'fecha','longname':'Fecha de pedido'}]"
+                                                            rpp="rpp"
+                                                            numpage="numpage"
+                                                            orderparams="orderParams"
+                                                            filterparams="filterParams">
+                                                        </cplistfilterbydate>
+                                                            
+                                                    </div>
+                                                     <p></p>
+                                                     <div ng-show="filterType == 3">
+                                                        <cplistfilterbyboolean
+                                                            url="url"
+                                                            fields="[{'name':'tiene_iva','longname':'Tiene iva'}]"
+                                                            rpp="rpp"
+                                                            numpage="numpage"
+                                                            orderparams="orderParams"
+                                                            filterparams="filterParams">
+                                                        </cplistfilterbyboolean>
+                                                            
+                                                    </div>
                                                     
                                                 </div>
                                             </div>
@@ -131,10 +154,10 @@ and open the template in the editor.
                                             <div class="text-center">
                                                 <ul class="list-inline">
                                                     <li><input type="checkbox" ng-model="visibles.id" ng-checked="visibles.id">Ident.</li>
-                                                    <li><input type="checkbox" ng-model="visibles.codigo" ng-checked="visibles.codigo">Codigo</li>
-                                                    <li><input type="checkbox" ng-model="visibles.existencias" ng-checked="visibles.existencias" >Existencias</li>
-                                                    <li><input type="checkbox" ng-model="visibles.precio" ng-checked="visibles.precio" >Precio</li>
-                                                    <li><input type="checkbox" ng-model="visibles.descripcion" ng-checked="visibles.descripcion" >Descripcion</li>
+                                                    <li><input type="checkbox" ng-model="visibles.fecha" ng-checked="visibles.fecha">Fecha</li>
+                                                    <li><input type="checkbox" ng-model="visibles.iva" ng-checked="visibles.iva" >Iva</li>
+                                                    <li><input type="checkbox" ng-model="visibles.tiene_iva" ng-checked="visibles.tiene_iva" >Tiene Iva</li>
+                                                    <li><input type="checkbox" ng-model="visibles.id_usuario" ng-checked="visibles.id_usuario" >Usuario</li>
                                                
                                                 </ul>
                                             </div>
@@ -146,47 +169,47 @@ and open the template in the editor.
                                                     <a ng-click="doorder('id', 'asc')"><i class="glyphicon glyphicon-arrow-up"></i></a>
                                                     <a ng-click="doorder('id', 'desc')"><i class="glyphicon glyphicon-arrow-down"></i></a>
                                                 </th>
-                                                <th ng-show="visibles.codigo" class="text-center">
-                                                    <label>Codigo</label><br/>
-                                                    <a ng-click="doorder('codigo', 'asc')"><i class="glyphicon glyphicon-arrow-up"></i></a>
-                                                    <a ng-click="doorder('codigo', 'desc')"><i class="glyphicon glyphicon-arrow-down"></i></a>
+                                                <th ng-show="visibles.fecha" class="text-center">
+                                                    <label>Fecha</label><br/>
+                                                    <a ng-click="doorder('fecha', 'asc')"><i class="glyphicon glyphicon-arrow-up"></i></a>
+                                                    <a ng-click="doorder('fecha', 'desc')"><i class="glyphicon glyphicon-arrow-down"></i></a>
                                                 </th>
-                                                <th ng-show="visibles.existencias" class="text-center">
-                                                    <label>Existencias</label><br/>
-                                                    <a ng-click="doorder('existencias', 'asc')"><i class="glyphicon glyphicon-arrow-up"></i></a>
-                                                    <a ng-click="doorder('existencias', 'desc')"><i class="glyphicon glyphicon-arrow-down"></i></a>
+                                                <th ng-show="visibles.iva" class="text-center">
+                                                    <label>Iva</label><br/>
+                                                    <a ng-click="doorder('iva', 'asc')"><i class="glyphicon glyphicon-arrow-up"></i></a>
+                                                    <a ng-click="doorder('iva', 'desc')"><i class="glyphicon glyphicon-arrow-down"></i></a>
                                                 </th>
-                                                <th ng-show="visibles.precio" class="text-center">
-                                                    <label>Precio</label><br/>
-                                                    <a ng-click="doorder('precio', 'asc')"><i class="glyphicon glyphicon-arrow-up"></i></a>
-                                                    <a ng-click="doorder('precio', 'desc')"><i class="glyphicon glyphicon-arrow-down"></i></a>
+                                                <th ng-show="visibles.tiene_iva" class="text-center">
+                                                    <label>Tiene Iva</label><br/>
+                                                    <a ng-click="doorder('tiene_iva', 'asc')"><i class="glyphicon glyphicon-arrow-up"></i></a>
+                                                    <a ng-click="doorder('tiene_iva', 'desc')"><i class="glyphicon glyphicon-arrow-down"></i></a>
                                                 </th>
-                                                <th ng-show="visibles.descripcion" class="text-center">
-                                                    <label>Descripcion</label><br/>
-                                                    <a ng-click="doorder('descripcion', 'asc')"><i class="glyphicon glyphicon-arrow-up"></i></a>
-                                                    <a ng-click="doorder('descripcion', 'desc')"><i class="glyphicon glyphicon-arrow-down"></i></a>
+                                                <th ng-show="visibles.id_usuario" class="text-center">
+                                                    <label>Usuario</label><br/>
+                                                    <a ng-click="doorder('id_usuario', 'asc')"><i class="glyphicon glyphicon-arrow-up"></i></a>
+                                                    <a ng-click="doorder('id_usuario', 'desc')"><i class="glyphicon glyphicon-arrow-down"></i></a>
                                                 </th>
                                                 
-                                                <th class="text-center">Acciones</th>
+                                                <th  class="text-center">Acciones</th>
                                             </tr>
                                             <tbody>
                                                 <tr ng-repeat="obj in page| filter:searchText">
                                                     <td ng-show="visibles.id"><b>{{obj.id}}</b></td>
-                                                    <td ng-show="visibles.codigo"><b>{{obj.codigo}}</b></td>
-                                                    <td ng-show="visibles.existencias">{{obj.existencias}}</td>
-                                                    <td ng-show="visibles.precio">{{obj.precio | currency : "€" : 2}}</td>
-                                                    <td ng-show="visibles.descripcion">{{obj.descripcion}}</td>
-
+                                                    <td ng-show="visibles.fecha"><b>{{obj.fecha}}</b></td>
+                                                    <td ng-show="visibles.iva">{{obj.iva}}</td>
+                                                    <td ng-show="visibles.tiene_iva" ng-bind-html="obj.tiene_iva|booleanizate" class="text-center"></td>
+                                                    
+                                                    <td ng-show="visibles.id_usuario"><a href="usuario/{{profile}}/view/{{obj.obj_usuario.id}}">{{obj.obj_usuario.nombre}}</a></td>
                                                     <td>
                                                         <div class="btn-toolbar" role="toolbar">
                                                             <div class="btn-group">
                                                                 <actions id="obj.id" name="ob"></actions>
-                                                                <a class="btn btn-default btn-xs" title="Pedidos" href="linea_pedido/{{profile}}/plistXproducto/{{obj.id}}/1/10">
-                                                                    <span ng-class="objectService.getIcon('linea_pedido')"></span>
+                                                                <a class="btn btn-default btn-xs" title="Pedidos" href="linea_pedido/{{profile}}/plistXpedido/{{obj.id}}/1/10">
+                                                                    <span ng-class="objectService.getIcon('pedido')"></span>
                                                                 </a>
                                                                 
+                                                             
                                                             </div>
-                                                            
                                                         </div>
                                                     </td>
                                                 </tr>
