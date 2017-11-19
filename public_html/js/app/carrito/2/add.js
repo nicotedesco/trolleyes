@@ -23,7 +23,7 @@ moduloCarrito.controller('CarritoAdd2Controller',
                         if (response.status == 200) {
                             if (response.data.status == 200) {
                                 $scope.bean.id = response.data.json;
-                                $scope.status = "El registro con id=" + $scope.id + " se ha añadido al carro.";
+                                $scope.status = "El registro con id=" + $scope.id + " y cantidad="+ $scope.cantidad +"se ha añadido al carro.";
                            
                             } else {
                                 $scope.status = "Error en la recepción de datos del servidor 2";

@@ -134,17 +134,17 @@ and open the template in the editor.
                                         <div class="panel-heading">
                                             <div class="text-center">
                                                 <ul class="list-inline">
-                                                   <li><input type="checkbox" ng-model="visibles.id_producto" ng-checked="visibles.id_producto">Ident.</li>
+                                                    <li><input type="checkbox" ng-model="visibles.id_producto" ng-checked="visibles.id_producto">Ident.</li>
                                                     <li><input type="checkbox" ng-model="visibles.cantidad" ng-checked="visibles.cantidad">Cantidad.</li>
                                                     <li><input type="checkbox" ng-model="visibles.producto" ng-checked="visibles.producto">Producto.</li>
-                                                    
+
                                                 </ul>
                                             </div>
                                         </div>
                                         <table class="table table-responsive table-bordered table-hover table-striped table-condensed dataTable no-footer">
                                             <tr>
                                                 <th ng-show="visibles.id_producto" class="text-center">
-                                                    <label>ID.</label><br/>
+                                                    <label>id</label><br/>
                                                     <a ng-click="doorder('id', 'asc')"><i class="glyphicon glyphicon-arrow-up"></i></a>
                                                     <a ng-click="doorder('id', 'desc')"><i class="glyphicon glyphicon-arrow-down"></i></a>
                                                 </th>
@@ -158,21 +158,22 @@ and open the template in the editor.
                                                     <a ng-click="doorder('producto', 'asc')"><i class="glyphicon glyphicon-arrow-up"></i></a>
                                                     <a ng-click="doorder('producto', 'desc')"><i class="glyphicon glyphicon-arrow-down"></i></a>
                                                 </th>
-                                                
+
                                                 <th  class="text-center">Acciones</th>
                                             </tr>
                                             <tbody>
                                                 <tr ng-repeat="obj in carritobean| filter:searchText">
                                                     <td ng-show="visibles.id_producto"><b>{{obj.id_producto}}</b></td>
                                                     <td ng-show="visibles.cantidad"><b>{{obj.cantidad}}</b></td>
-                                                     <td ng-show="visibles.producto" class="text-center">
+                                                    <td ng-show="visibles.producto" class="text-center">
                                                         <a href="producto/{{profile}}/view/{{obj.producto.id}}">{{obj.producto.descripcion}}</a>
                                                     </td>
                                                     <td>
                                                         <div class="btn-toolbar" role="toolbar">
                                                             <div class="btn-group">
-                                                                <actions id="obj.id" name="ob"></actions>
-                                                               
+                                                                <a class="btn btn-default btn-xs" title="Remove" href="carrito/{{profile}}/remove/{{obj.producto.id}}">
+                                                                    <span class="glyphicon glyphicon-remove"></span>
+                                                                </a>
                                                             </div>
                                                         </div>
                                                     </td>
