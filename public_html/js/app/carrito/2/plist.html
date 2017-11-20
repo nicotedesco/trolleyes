@@ -158,6 +158,11 @@ and open the template in the editor.
                                                     <a ng-click="doorder('producto', 'asc')"><i class="glyphicon glyphicon-arrow-up"></i></a>
                                                     <a ng-click="doorder('producto', 'desc')"><i class="glyphicon glyphicon-arrow-down"></i></a>
                                                 </th>
+                                                <th ng-show="visibles.producto" class="text-center">
+                                                    <label>Precio</label><br/>
+                                                    <a ng-click="doorder('precio', 'asc')"><i class="glyphicon glyphicon-arrow-up"></i></a>
+                                                    <a ng-click="doorder('precio', 'desc')"><i class="glyphicon glyphicon-arrow-down"></i></a>
+                                                </th>
 
                                                 <th  class="text-center">Acciones</th>
                                             </tr>
