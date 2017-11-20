@@ -103,6 +103,8 @@ trolleyes.config(['$routeProvider', function ($routeProvider) {
          $routeProvider.when('/carrito/1/plist/:page?/:rpp?', {templateUrl: 'js/app/carrito/1/plist.html', controller: 'CarritoPList1Controller', resolve: {auth: authenticationAdministratorPromise}}); 
          $routeProvider.when('/carrito/1/remove/:id', {templateUrl: 'js/app/carrito/1/remove.html', controller: 'CarritoRemove1Controller', resolve: {auth: authenticationAdministratorPromise}});
          $routeProvider.when('/carrito/1/empty/:page?/:rpp?', {templateUrl: 'js/app/carrito/1/empty.html', controller: 'CarritoEmpty1Controller', resolve: {auth: authenticationAdministratorPromise}});
+         $routeProvider.when('/carrito/1/add/:id', {templateUrl: 'js/app/carrito/1/add.html', controller: 'CarritoAdd2Controller', resolve: {auth: authenticationClientPromise}});
+
         //-------Carrito cliente-------------------
          $routeProvider.when('/carrito/2/plist/:page?/:rpp?', {templateUrl: 'js/app/carrito/2/plist.html', controller: 'CarritoPList2Controller', resolve: {auth: authenticationClientPromise}}); 
          $routeProvider.when('/carrito/2/remove/:id', {templateUrl: 'js/app/carrito/2/remove.html', controller: 'CarritoRemove2Controller', resolve: {auth: authenticationClientPromise}});
